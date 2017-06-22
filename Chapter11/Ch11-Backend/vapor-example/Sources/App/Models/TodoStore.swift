@@ -15,6 +15,16 @@ final class TodoStore {
     private init() {
     }
     
+    
+    public func addInitialTodoItems(){
+        let todo1 = Todo(todoId: 1, name: "First Todo", description: "Description", notes: "Test", completed: false, synced: false)
+        list.append(todo1)
+        let todo2 = Todo(todoId: 2, name: "Second Todo", description: "Description", notes: "Test", completed: false, synced: false)
+        list.append(todo2)
+        let todo3 = Todo(todoId: 3, name: "Third Todo", description: "Description", notes: "Test", completed: false, synced: false)
+        list.append(todo3)
+    }
+    
     func addOrUpdateItem(item: Todo) {
         if self.find(id: item.todoId) != nil {
             _ = update(item: item)

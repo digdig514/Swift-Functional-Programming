@@ -4,19 +4,30 @@ import Fluent
 final class User: Model {
     var id: Node?
     var name: String
+    var password: String
     
-    init(name: String) {
+   /* init(name: String) {
         self.name = name
-    }
+    }*/
 
+    
+    init(name: String, password: String) {
+        self.name = name
+        self.password = password
+
+    }
+    
     init(node: Node, in context: Context) throws {
-        id = try node.extract("id")
+       
         name = try node.extract("name")
+        password = try node.extract("password")
+        
     }
 
     func makeNode(context: Context) throws -> Node {
         return try Node(node: [
-            "name": name
+            "name": name,
+            "password": password
         ])
     }
 
@@ -28,9 +39,10 @@ final class User: Model {
         //
     }
 }
-
+/*
 extension User {
     public convenience init?(from string: String) throws {
         self.init(name: string)
+
     }
-}
+}*/
